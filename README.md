@@ -134,3 +134,42 @@ class BuyTicketsPage {
 ```
 
 
+## Why Cucumber and POM?
+
+The choice of Cucumber and Page Object Model (POM) for this framework was intentional as it offers several benefits:
+
+1. **Maintainability:** Clear separation between test cases and page-related code ensures easy maintenance.
+2. **Reusability:** Encapsulation of page objects and test steps allows for seamless reuse across multiple tests.
+3. **Readability:** Utilizing Cucumber enhances test cases' readability, making them easily understandable even for non-technical stakeholders.
+4. **Collaboration:** The transparent POM and Cucumber/test step pattern promotes easy understanding and collaboration among team members.
+
+## Final Notes/Questions
+
+This framework serves as a Proof of Concept, demonstrating a simple end-to-end test as outlined in the feature file. It doesn't encompass exhaustive negative testing or validation of various front-end functions beyond what's specified
+
+Regarding the implementation of selecting dates:
+
+The solution implemented (see `selectDatesByDays` method in `BuyTicketsPage.js`) works generally for scenarios with specific days but may not be the optimal approach.
+
+I have answered the folow up questions in the prompt below:
+
+
+### Are there any oddities you noticed about the website from a functional or UX perspective?
+
+During testing, I encountered challenges with the date picker widget. Specifically:
+
+- The date picker highlights today's date when opened but retains the highlight even after making a new selection. There's no way to unhighlight today's date.
+- Typing a date into one input field overwrites the date in the other field, affecting user interaction.
+
+
+### What changes would you make to the website for ease of implementation of a FE automation test suite or general testing?
+
+Based on what I encountered on the website, here are some suggested improvements:
+
+1) Adding unique identifiers for Automation use, such as "test-id" to front end elements. Allowing for reusable elements for tests and preventing automation tests from being brittle
+
+2) Eleminating inline event listeners, such as 'ng-change'. It would be better to seperate the html from the javascript to enhance readability and simplify debugging. Specific testing atttributes can be added to help with testing.
+
+3) Using descriptive class names, and making sure those names are consistant. This will help in creating robust and reliable tests
+
+These are just some ideas based on my limited interaction with the site.
